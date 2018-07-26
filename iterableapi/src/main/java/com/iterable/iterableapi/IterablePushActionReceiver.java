@@ -1,5 +1,6 @@
 package com.iterable.iterableapi;
 
+import android.util.Log;
 import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -24,6 +25,7 @@ public class IterablePushActionReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Bundle extras = intent.getExtras();
+        Log.w("Truebill", extras.toString());
 
         // Dismiss the notification
         int requestCode = extras.getInt(IterableConstants.REQUEST_CODE, 0);
@@ -42,6 +44,7 @@ public class IterablePushActionReceiver extends BroadcastReceiver {
 
     private void handlePushAction(Context context, Intent intent) {
         IterableNotificationData notificationData = new IterableNotificationData(intent.getExtras());
+        Log.w("Truebill", String.valueOf(notificationData));
         String actionIdentifier = intent.getStringExtra(IterableConstants.ITERABLE_DATA_ACTION_IDENTIFIER);
         IterableAction action = null;
         JSONObject dataFields = new JSONObject();
